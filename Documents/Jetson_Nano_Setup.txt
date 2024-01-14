@@ -1,0 +1,49 @@
+Jetson nano kit comes with different specifications like one with 4GB RAM, other having 2GB RAM.
+Both have some differences like USB ports in 4GB has 4 ports while in 2GB there are only 3. And 2GB chip has C port, while 4GB
+has laptop adapter like port for power supply.
+2GB nano uses 5.1V C type charger (3A).
+
+Step 1 :- Get SD card at least 16GB, on which libraries and all will be downloaded
+Step 2 :- Get it to laptop to flash it ( plug in the card to laptop).
+Step 3 :- Go to nvidia website and download latest JetPack nano developer kit SD card image
+Step 4 :- for windows download SD card formatter from same site, and also etcher
+Step 5 :- First open sd card formatter and format the sd card and then using etcher use downloaded image zip file and flash sd card
+Step 6 :- Insert SD card to nano 
+Step 7 :- connect mouse, keyboard, desktop to it and boot the system on desktop.
+Step 8 :- open terminal in that system (linux) and check swap area ( it should be 971 i.e 1GB)
+Step 9 :- run these commands to make it upto 4GB to make better space for our projects 
+	1. sudo systemctl disable nvzramconfig
+	2. sudo fallocate -l 4G /mnt/4GB.swap
+	3. sudo chmod 600 /mnt/4GB.swap
+	4. sudo mkswap /mnt/4GB.swap
+	5. sudo vi /etc/fstab
+	make it --INSERT--
+	/mnt/4GB.swap swap swap defaults 0 0 
+	then close using :wq
+	Then reboot and thus 4GB swap will be available.
+
+
+To specifically run this DLI course, which includes deep learning training with PyTorch on your Jetson Nano, you'll need to make the following modifications and additions to the items listed in the general setup instructions:
+64GB MicroSD Card
+We recommend a larger microSD card to ensure there is plenty of room for your applications and data.
+
+Internet Connection For Your Jetson Nano
+You'll need an Internet connection through either the Ethernet port or a compatible WiFi device the first time you run the course notebooks. You'll execute a command that downloads a Docker image from the NVIDIA NGC cloud. After that, as long as the Docker image is not deleted from your microSD card, you won't need the Internet connection on the Jetson Nano to run the course notebooks.
+
+USB Webcam
+You'll need a camera to capture images in the course projects. As an example of a compatible camera, NVIDIA has verified that the Logitech C270 USB Webcam works with these projects. The ability to position the camera easily for capturing images hands-free makes this a great choice. Some other USB webcams may also work with the projects. If you already have one on hand, you could test it as an alternative.
+
+USB Data Cable (Micro-B To Type-A)
+You'll also need a Micro USB to USB-A cable to directly connect your computer to the Jetson Nano Developer Kit's Micro USB port. The cable must be capable of data transfers, rather than only designed to power a device. This is a common cable available at many outlets if you don't already have one on hand.
+
+Original 4GB Version Only: Alternate Power Supply
+For this course, the 5V 4A DC barrel jack power supply is required. Although it is possible to power the original 4GB Jetson Nano with a smaller microUSB supply, this is not robust enough for the high GPU compute load we require for our projects. In addition, you will need the microUSB port available as a direct connection to your computer for this course.
+
+5V 4A Power Supply with 2.1mm DC barrel connector
+The barrel jack must be 5.5mm OD x 2.1mm ID x 9.5mm length, center-positive. As an example of a good power supply, NVIDIA has validated Adafruit’s 5V 4A (4000mA) switching power supply - UL Listed.
+
+2-pin Jumper
+To specify use of the barrel-type power supply on the Jetson Nano Developer Kit, a 2-pin jumper is required. This is an inexpensive item available at many outlets.
+
+current position :- https://courses.nvidia.com/courses/course-v1:DLI+S-RX-02+V2/course/
+
